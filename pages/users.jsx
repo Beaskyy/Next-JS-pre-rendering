@@ -1,27 +1,28 @@
-import User from "./components/user";
+import React from 'react'
+import User from '../components/user'
 
-const Users = ({ users }) => {
+const users = ({users}) => {
   return (
     <div>
-      <h1>List of users</h1>
-      {users.map((user) => (
+      {users.map(user => (
         <div key={user.id}>
-          <User user={user} />
+          <User beasky={user}/>
         </div>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default Users;
+export default users
+
 export const getStaticProps = async () => {
-  const response = await fetch("https://jsonplaceholder.typicode.com/users");
-  const data = await response.json();
-  console.log(data);
+  const response = await fetch('https://jsonplaceholder.typicode.com/users')
+  const data = await response.json()
+  console.log(data)
 
   return {
     props: {
-      users: data,
-    },
-  };
-};
+      users: data
+    }
+  }
+}
